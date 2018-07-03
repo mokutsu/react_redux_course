@@ -29,3 +29,12 @@
   background-color: rgba(250, 250, 250, 0.8);
   text-decoration: underline;
 }
+
+.badge {
+  background-color: rgba(30, 50, 250, 0.9);
+  color: white;
+  font-size: 12px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
+}

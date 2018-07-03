@@ -1,5 +1,6 @@
 import React from 'react';
 // essentially the same as feeding in props {video: video} into {video: video}, and rename the property as a var name
+// with props, {video: video, onVideoSelect: onVideoSelect}
 
 const VideoListItem = ({video, onVideoSelect}) => {
   const imageUrl = video.snippet.thumbnails.default.url;
