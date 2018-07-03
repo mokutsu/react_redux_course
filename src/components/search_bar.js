@@ -14,14 +14,21 @@ class SearchBar extends React.Component {
   render() {
     // we set the state by using the setState function instead
     return (
-      <div>
+      <div
+        className='search-bar'
+      >
         <input
           value={this.state.term} // setting value here makes it a controlled element, the value isn't automatically updated. the user types, which causes the onchange to fire, which changes state, which then changes state, which then changes value. without this line, the value would have just updated.
-          onChange={event => this.setState({ term: event.target.value })}
-        />
-        value of the input: {this.state.term}
+          onChange={event => this.onInputChange(event.target.value)}/>
       </div>
     )
+  }
+
+  onInputChange(searchTerm) {
+    // this.setState updates state internal to searchBar component
+    // this.props.onSearchTermChange calls the parent component, App's onSearchTermChange method, because it was passed down as a prop
+    this.setState({term: searchTerm});
+    this.props.onSearchTermChange(searchTerm);
   }
 
 }
