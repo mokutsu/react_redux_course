@@ -54,7 +54,7 @@ class App extends Component {
     }, 500)
     return (
       <div>
-        <SearchBar onSearchTermChange={debouncedVideoSearch} defaultSearch={this.state.defaultSearch} activeTerm={this.state.activeTerm}/>
+        <SearchBar onSearchTermChange={debouncedVideoSearch} defaultSearch={this.state.defaultSearch} activeTerm={this.state.activeTerm} />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           videos={this.state.videoResults}

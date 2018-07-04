@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
     // calls parent class, Component's method (essentially super(class).__init__() i think)
     super(props);
     // the constructor function is probably the only time we will manipulate state directly
-    this.state = { term: props.defaultSearch };
+    this.state = { term: props.activeTerm };
   }
 
   render() {
