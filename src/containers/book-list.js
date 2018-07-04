@@ -1,8 +1,9 @@
 //a container is only different from a component because it has access to the redux state through the react-redux library
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class BookList extends Component {
+class BookList extends Component {
 
   renderList() {
     return this.props.books.map((book) => {
@@ -19,3 +20,13 @@ export default class BookList extends Component {
     )
   }
 }
+
+// maps the application state in redux to the component props. automatically rerenders when state changes.
+function mapStateToProps(state) {
+  // whatever is returned will show up as props inside of BookList
+  return {
+    books: state.books
+  };
+}
+
+export default connect(mapStateToProps)(BookList);
