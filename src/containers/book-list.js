@@ -1,3 +1,5 @@
+//a container is only different from a component because it has access to the redux state through the react-redux library
+
 import React, { Component } from 'react';
 
 export default class BookList extends Component {
