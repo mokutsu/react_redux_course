@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = { term: ''};
     ///same as if we were to do {this.function.bind(this)} in the onChange, but having it up here allows it to be set in the constructor
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(event) {
-    console.log(event);
+    // console.log(event);
     this.setState({term: event.target.value})
   }
   onFormSubmit(event) {
+    console.log('form submit!')
     event.preventDefault();
-    
+
     // go fetch weather data
+    this.props.fetchWeather(this.state.term);
+
+    this.setState({ term: ''});
   }
+
   render() {
     return (
       <div>
@@ -37,3 +46,11 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+
+function mapDispatchToProps(dispatch) {
+  // binds action creators with dispatch to  flow to middleware and reducers
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
