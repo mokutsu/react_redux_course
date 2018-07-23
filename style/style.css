@@ -1,0 +1,15 @@
+.table td, th {
+  width: 30%;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+body {
+  margin: 20px;
+  padding: 20px;
+}
+
+svg {
+  width: 200px;
+  height: 150px;
+}
