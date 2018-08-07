@@ -3,15 +3,17 @@ import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
   renderField(field) { // field object contains event handlers, field.input contains a bunnch of event handlers. By doing ...field.input, just says all teh properties within field.input are spread out and assigned as props on the input element
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger': ''}`;
     return (
-      <div className='form-group'>
+      <div className={className}>
         <label>{field.label}</label>
         <input
           type="text"
           className='form-control'
           {...field.input}
         />
-        <span style={{color: 'red'}}> {field.meta.touched ? field.meta.error : ''} </span>
+        <span className='text-help'> {touched ? error : ''} </span>
       </div>
     )
   }
