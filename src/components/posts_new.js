@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 class PostsNew extends Component {
   renderField(field) { // field object contains event handlers, field.input contains a bunnch of event handlers. By doing ...field.input, just says all teh properties within field.input are spread out and assigned as props on the input element
@@ -21,7 +24,10 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     // this === component
-    console.log(values);
+    // console.log(values);
+    this.props.createPost(values, () => {
+      this.props.history.push('/'); // when this line is eecuted, automatically and instantly returns to main route route.  can aloso define any longer terms / names
+    });
   }
   render() {
     const { handleSubmit } = this.props;
@@ -43,6 +49,7 @@ class PostsNew extends Component {
           component={this.renderField}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-danger">Cancel </Link>
       </form>
     );
   }
@@ -69,4 +76,6 @@ function validate(values) {
 export default reduxForm({
   validate, // validate property from reduxform is populated with function of same name
   form: 'PostsNewForm'
-})(PostsNew);
+})(
+  connect(null, { createPost })(PostsNew)
+); // connect function returns a valid react component
