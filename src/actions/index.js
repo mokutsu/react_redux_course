@@ -43,7 +43,7 @@ export function deletePosts(id) {
   const request = axios.delete(`$ROOT-url/posts/${id}${API_KEY}`);
 
   return {
-    type = DELETE_POSTS,
+    type: DELETE_POSTS,
 
   }
 }

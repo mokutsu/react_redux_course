@@ -5,11 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise'
 import reducers from './reducers';
-import PostsIndex from './components/posts_index';
+import PostIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 // create 2 seperate components for testing
 ReactDOM.render(
@@ -19,7 +19,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/posts/new" component={PostsNew} />
           <Route path="/posts/:id" component={PostsShow} />
-          <Route path="/" component={PostsIndex} />
+          <Route path="/" component={PostIndex} />
         </Switch>
       </div>
 

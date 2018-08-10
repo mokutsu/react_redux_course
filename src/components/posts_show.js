@@ -20,9 +20,9 @@ class PostsShow extends Component {
     }
     return (
       <div>
-        <Link to="/">Return to index</Link>
+        <Link to="/">
         <button
-          className='btn btn-danger pull-xs-right'></button>
+          className='btn btn-danger pull-xs-right'>Return</button></Link>
         <h6>Categories: {post.categories}</h6>
         <p>{post.content}</p>
       </div>
